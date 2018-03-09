@@ -128,12 +128,17 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+
 if DEBUG:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static')
     ]
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
     DATABASES['default'].update({
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'DjangoShopDB',

@@ -6,7 +6,12 @@ server {
     client_max_body_size 75M;
 
     location /static {
-        alias /home/sites/DjangoShop/static;
+        alias /home/sites/DjangoShop/static/;
+    }
+
+    location /media {
+        autoindex on;
+        alias /home/sites/DjangoShop/media/;
     }
 
     location / {
