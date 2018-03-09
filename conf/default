@@ -1,0 +1,20 @@
+server {
+    listen      80;
+    server_name localhost;
+    charset    utf-8;
+
+    client_max_body_size 75M;
+
+    location /static {
+        alias /home/sites/DjangoShop/static;
+    }
+
+    location / {
+        uwsgi_pass 127.0.0.1:7758;
+        include uwsgi_params;
+    }
+
+}
+
+
+
