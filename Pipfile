@@ -9,6 +9,7 @@ name = "pypi"
 
 django = "*"
 pillow = "*"
+pymysql = "*"
 
 
 [dev-packages]
