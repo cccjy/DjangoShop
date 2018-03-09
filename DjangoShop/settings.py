@@ -132,3 +132,12 @@ if DEBUG:
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static')
     ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    DATABASES['default'].update({
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'DjangoShopDB',
+        'USER': 'root',
+        'PASSWORD': '13945657337xX',
+        'HOST': 'localhost',
+    })
