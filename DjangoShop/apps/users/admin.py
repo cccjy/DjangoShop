@@ -2,6 +2,8 @@ from django.contrib import admin
 
 from users.models import UserProfile, VerifyCode
 
+admin.site.site_header = '商城后台管理'
+
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):

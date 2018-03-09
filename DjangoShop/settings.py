@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'goods.apps.GoodsConfig',
     'trade.apps.TradeConfig',
+    # tools. These tools can be used with manage.py commands.
+    'cmd_tools',
     # extra_apps
     'DjangoUeditor',
 ]
