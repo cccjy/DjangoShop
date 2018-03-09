@@ -17,7 +17,7 @@ def set_env():
 def import_goods_data():
     from goods.models import Goods, GoodsCategory, GoodsImage
 
-    with open('product_data.json', 'r', encoding='utf8') as f:
+    with open('data/product_data.json', 'r', encoding='utf8') as f:
         row_data = json.loads(f.read())
 
     for goods_detail in row_data:
@@ -45,7 +45,7 @@ def import_goods_data():
 def import_category_data():
     from goods.models import GoodsCategory
 
-    with open('category_data.json', 'r', encoding='utf8') as f:
+    with open('data/category_data.json', 'r', encoding='utf8') as f:
         row_data = json.loads(f.read())
 
     for lev1_cat in row_data:
