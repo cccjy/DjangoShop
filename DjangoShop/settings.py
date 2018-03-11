@@ -130,13 +130,21 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
+# 测试模式
 if DEBUG:
+    """
+        配置media目录, 静态文件目录
+    """
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static')
     ]
+# 生产模式
 else:
+    """
+        配置收集静态文件目录, 配置生产环境数据库
+    """
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
     DATABASES['default'].update({
