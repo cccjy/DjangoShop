@@ -18,10 +18,12 @@ from django.urls import path, re_path
 from django.views.generic import TemplateView
 from django.views.static import serve
 
+import xadmin
 from DjangoShop import settings
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('xadmin/', xadmin.site.urls),
     path('admin/', admin.site.urls),
 ]
 
