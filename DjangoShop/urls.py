@@ -14,16 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.urls import include
 from django.urls import path
 from django.urls import re_path
-from django.urls import include
 from django.views.generic import TemplateView
 from django.views.static import serve
 from rest_framework.documentation import include_docs_urls
+from rest_framework.routers import DefaultRouter
 
 import xadmin
 from DjangoShop import settings
-from goods.views import GoodsListView
+from goods.views import GoodsViewSet
+
+router = DefaultRouter()
+# register ViewSet
+router.register(r'goods', GoodsViewSet)
 
 urlpatterns = [
     # 静态页面渲染
@@ -34,11 +39,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # django-restframework
+    path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
     path('docs/', include_docs_urls(title='DjangoShop')),
-
-    # model-url
-    path('goods/', GoodsListView.as_view(), name='goods-list')
 ]
 
 if settings.DEBUG:
