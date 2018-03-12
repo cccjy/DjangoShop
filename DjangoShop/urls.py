@@ -28,7 +28,7 @@ from goods.views import GoodsViewSet
 
 router = DefaultRouter()
 # register ViewSet
-router.register(r'goods', GoodsViewSet)
+router.register('goods', GoodsViewSet, base_name='goods')
 
 urlpatterns = [
     # 静态页面渲染

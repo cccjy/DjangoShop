@@ -52,10 +52,12 @@ INSTALLED_APPS = [
     'trade.apps.TradeConfig',
     # tools. These tools can be used with manage.py commands.
     'cmd_tools',
-    # extra_apps
+    # plugin
+    'django_filters',
     'rest_framework',
-    'DjangoUeditor',
     'crispy_forms',
+    # extra_apps
+    'DjangoUeditor',
     'xadmin',
 ]
 
