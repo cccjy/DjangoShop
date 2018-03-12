@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # tools. These tools can be used with manage.py commands.
     'cmd_tools',
     # extra_apps
+    'rest_framework',
     'DjangoUeditor',
     'crispy_forms',
     'xadmin',
