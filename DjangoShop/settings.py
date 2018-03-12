@@ -154,5 +154,5 @@ else:
         'NAME': 'DjangoShopDB',
         'USER': 'root',
         'PASSWORD': '13945657337xX',
-        'HOST': 'localhost',
+        'HOST': '192.168.33.10',
     })
