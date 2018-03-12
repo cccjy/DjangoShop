@@ -27,7 +27,7 @@ from goods.views import GoodsListView
 
 urlpatterns = [
     # 静态页面渲染
-    path('home', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('home/', TemplateView.as_view(template_name='index.html'), name='index'),
 
     # admin
     path('xadmin/', xadmin.site.urls),
