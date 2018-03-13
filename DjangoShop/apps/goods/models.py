@@ -11,7 +11,7 @@ class GoodsCategory(models.Model):
 
     name = models.CharField(default='', max_length=30, verbose_name='名字')
     code = models.CharField(default='', max_length=30, verbose_name='类别code')
-    desc = models.CharField(default='', max_length=30, verbose_name='描述')
+    desc = models.CharField(default='', null=True, blank=True, max_length=30, verbose_name='描述')
     category_type_choices = (
         (1, '1'),
         (2, '1'),
@@ -69,6 +69,7 @@ class Goods(models.Model):
     is_new = models.BooleanField(default=False, verbose_name='是否新品')
     is_hot = models.BooleanField(default=False, verbose_name='是否热销')
     add_time = models.DateTimeField(default=timezone.now, verbose_name='添加时间')
+    is_del = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = '商品'
@@ -76,6 +77,10 @@ class Goods(models.Model):
 
     def __str__(self):
         return self.name
+
+    def remove(self):
+        self.is_del = True
+        self.save()
 
 
 class GoodsImage(models.Model):
@@ -92,7 +97,6 @@ class GoodsImage(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-
         return self.goods.name
 
 

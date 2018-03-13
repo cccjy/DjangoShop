@@ -7,7 +7,7 @@ from goods.models import GoodsImage
 
 
 class GoodsCategoryAdmin(object):
-    pass
+    search_fields = ('name',)
 
 
 class GoodsCategoryBrandAdmin(object):

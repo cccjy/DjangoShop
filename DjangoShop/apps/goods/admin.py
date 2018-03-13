@@ -5,7 +5,7 @@ from goods.models import GoodsCategory, GoodsCategoryBrand, Goods, GoodsImage, B
 
 @admin.register(GoodsCategory)
 class GoodsCategoryAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ('name',)
 
 
 @admin.register(GoodsCategoryBrand)

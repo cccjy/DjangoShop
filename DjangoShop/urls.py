@@ -24,11 +24,12 @@ from rest_framework.routers import DefaultRouter
 
 import xadmin
 from DjangoShop import settings
-from goods.views import GoodsViewSet
+from goods.views import GoodsViewSet, CategoryViewSet
 
 router = DefaultRouter()
 # register ViewSet
 router.register('goods', GoodsViewSet, base_name='goods')
+router.register('category', CategoryViewSet, base_name='category')
 
 urlpatterns = [
     # 静态页面渲染
