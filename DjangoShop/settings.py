@@ -56,12 +56,14 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
     'crispy_forms',
+    'corsheaders',
     # extra_apps
     'DjangoUeditor',
     'xadmin',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -70,6 +72,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# 允许非同源访问
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'DjangoShop.urls'
 

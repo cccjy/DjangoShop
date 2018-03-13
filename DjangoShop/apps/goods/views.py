@@ -39,6 +39,7 @@ class GoodsViewSet(mixins.ListModelMixin,
 
 
 class CategoryViewSet(mixins.ListModelMixin,
+                      mixins.RetrieveModelMixin,
                       viewsets.GenericViewSet):
     """
     list:
