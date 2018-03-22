@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import include
 from django.urls import path
 from django.urls import re_path
+from django.views import View
 from django.views.generic import TemplateView
 from django.views.static import serve
+from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.documentation import include_docs_urls
 from rest_framework.routers import DefaultRouter
 
@@ -42,6 +44,7 @@ urlpatterns = [
     # django-restframework
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
+    path('api-token-auth/', obtain_auth_token),
     path('docs/', include_docs_urls(title='DjangoShop')),
 ]
 

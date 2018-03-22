@@ -33,11 +33,6 @@ ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'users.UserProfile'
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-#     'PAGE_SIZE': 10
-# }
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,19 +40,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     # models
     'user_operation.apps.UserOperationConfig',
     'users.apps.UsersConfig',
     'goods.apps.GoodsConfig',
     'trade.apps.TradeConfig',
+
     # tools. These tools can be used with manage.py commands.
     'cmd_tools',
+
     # plugin
-    'rest_framework.authtoken',
     'django_filters',
     'rest_framework',
+    'rest_framework_jwt',
     'crispy_forms',
     'corsheaders',
+
     # extra_apps
     'DjangoUeditor',
     'xadmin',
@@ -76,6 +75,14 @@ MIDDLEWARE = [
 
 # 允许非同源访问
 CORS_ORIGIN_ALLOW_ALL = True
+
+# DRF
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
 
 ROOT_URLCONF = 'DjangoShop.urls'
 
