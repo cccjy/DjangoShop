@@ -8,6 +8,7 @@ from goods.models import GoodsImage
 
 class GoodsCategoryAdmin(object):
     search_fields = ('name',)
+    list_filter = ('category_type',)
 
 
 class GoodsCategoryBrandAdmin(object):
@@ -15,7 +16,8 @@ class GoodsCategoryBrandAdmin(object):
 
 
 class GoodsAdmin(object):
-    pass
+    search_fields = ('name',)
+    ordering = ('name', 'sold_num')
 
 
 class GoodsImageAdmin(object):

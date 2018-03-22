@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     # tools. These tools can be used with manage.py commands.
     'cmd_tools',
     # plugin
+    'rest_framework.authtoken',
     'django_filters',
     'rest_framework',
     'crispy_forms',

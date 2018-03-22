@@ -10,9 +10,12 @@ from .serializers import GoodsSerializer, CategorySerializer
 
 
 class GoodsPagination(PageNumberPagination):
-    page_size = 10
+    """
+        商品分页
+    """
+    page_size = 12
     page_size_query_param = 'page_size'
-    page_query_param = 'p'
+    page_query_param = 'page'
     max_page_size = 100
 
 
@@ -35,7 +38,7 @@ class GoodsViewSet(mixins.ListModelMixin,
     )
     filter_class = GoodsFilter
     search_fields = ('name', 'goods_brief', 'goods_desc',)
-    ordering_fields = ('sold_nums', 'add_time',)
+    ordering_fields = ('sold_num', 'shop_price')
 
 
 class CategoryViewSet(mixins.ListModelMixin,

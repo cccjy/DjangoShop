@@ -13,13 +13,13 @@ class GoodsCategory(models.Model):
     code = models.CharField(default='', max_length=30, verbose_name='类别code')
     desc = models.CharField(default='', null=True, blank=True, max_length=30, verbose_name='描述')
     category_type_choices = (
-        (1, '1'),
-        (2, '1'),
-        (3, '1'),
+        (1, '一级类目'),
+        (2, '二级类目'),
+        (3, '三级类目'),
     )
-    category_type = models.IntegerField(choices=category_type_choices, verbose_name='添加时间')
+    category_type = models.IntegerField(choices=category_type_choices, verbose_name='类目')
     parent = models.ForeignKey('self', null=True, blank=True, verbose_name='父类别',
-                               related_name='sub_cat', on_delete=models.DO_NOTHING)
+                               related_name='sub_cat', on_delete=models.CASCADE)
     is_tab = models.BooleanField(default=False, verbose_name='是否导航')
     add_time = models.DateTimeField(default=timezone.now, verbose_name='添加时间')
 
@@ -52,11 +52,11 @@ class Goods(models.Model):
     """
         商品
     """
-    category = models.ForeignKey(GoodsCategory, verbose_name='商品类目', on_delete=models.DO_NOTHING)
+    category = models.ForeignKey(GoodsCategory, verbose_name='商品类目', on_delete=models.CASCADE)
     goods_sn = models.CharField(max_length=50, default='', verbose_name='商品唯一货号')
     name = models.CharField(max_length=100, verbose_name='商品名')
     click_nums = models.IntegerField(default=0, verbose_name='点击数')
-    sold_nums = models.IntegerField(default=0, verbose_name='商品销售量')
+    sold_num = models.IntegerField(default=0, verbose_name='商品销售量')
     fav_nums = models.IntegerField(default=0, verbose_name='收藏数')
     goods_nums = models.IntegerField(default=0, verbose_name='库存数')
     market_price = models.FloatField(default=0, verbose_name='市场价格')
@@ -69,7 +69,7 @@ class Goods(models.Model):
     is_new = models.BooleanField(default=False, verbose_name='是否新品')
     is_hot = models.BooleanField(default=False, verbose_name='是否热销')
     add_time = models.DateTimeField(default=timezone.now, verbose_name='添加时间')
-    is_del = models.BooleanField(default=False)
+    is_del = models.BooleanField(default=False, verbose_name='逻辑删除')
 
     class Meta:
         verbose_name = '商品'
@@ -88,7 +88,7 @@ class GoodsImage(models.Model):
         商品轮播图
     """
 
-    goods = models.ForeignKey(Goods, verbose_name='商品', related_name='images', on_delete=models.DO_NOTHING)
+    goods = models.ForeignKey(Goods, verbose_name='商品', related_name='images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='', verbose_name='图片', null=True, blank=True)
     add_time = models.DateTimeField(default=timezone.now, verbose_name='添加时间')
 
@@ -104,7 +104,7 @@ class Banner(models.Model):
     """
         轮播商品
     """
-    goods = models.ForeignKey(Goods, verbose_name='商品', on_delete=models.DO_NOTHING)
+    goods = models.ForeignKey(Goods, verbose_name='商品', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='banner', verbose_name='轮播图片')
     index = models.IntegerField(default=0, verbose_name='轮播顺序')
     add_time = models.DateTimeField(default=timezone.now, verbose_name='添加时间')
